@@ -378,15 +378,89 @@
         #hannelore:not(.walking) .hair-side-r { animation: hair-bounce 3s ease-in-out infinite 0.3s; }
 
         /* Sylvester */
-        #sylvester .hair, #sylvester .hair-side-l, #sylvester .hair-side-r { background: #4a7a30; }
-        #sylvester .eye-l, #sylvester .eye-r { background: #4a7a30; }
-        #sylvester .robe { background: linear-gradient(180deg, #f0e8d0 0%, #d8d0b8 100%); }
-        #sylvester .arm-l, #sylvester .arm-r { background: #f0e8d0; }
-        #sylvester .cape { background: rgba(80, 140, 60, 0.5); }
+        #sylvester .hair, #sylvester .hair-side-l, #sylvester .hair-side-r { background: #2a5aaa; }
+        #sylvester .eye-l, #sylvester .eye-r { background: #2a5aaa; }
+        #sylvester .robe { background: linear-gradient(180deg, #e8c840 0%, #d4b030 100%); }
+        #sylvester .arm-l, #sylvester .arm-r { background: #e8c840; }
+        #sylvester .cape { background: rgba(200, 170, 40, 0.5); }
         #sylvester .syl-mantle { position: absolute; top: 26px; left: -4px; width: 48px; height: 16px; background: linear-gradient(180deg, #d4a040, #b88830); border-radius: 6px 6px 0 0; z-index: -1; }
         #sylvester:not(.walking) .robe { animation: breathe 2.8s ease-in-out infinite; }
         #sylvester:not(.walking) .hair-side-l { animation: hair-bounce 3.2s ease-in-out infinite; }
         #sylvester:not(.walking) .hair-side-r { animation: hair-bounce 3.2s ease-in-out infinite 0.4s; }
+
+        /* Fran (head attendant — silver/gray hair, blue-gray robes) */
+        #fran .hair, #fran .hair-side-l, #fran .hair-side-r { background: #8898a8; }
+        #fran .eye-l, #fran .eye-r { background: #4a5a6a; }
+        #fran .robe { background: linear-gradient(180deg, #3a4a5a 0%, #2a3a4a 100%); }
+        #fran .arm-l, #fran .arm-r { background: #3a4a5a; }
+        #fran .cape { background: rgba(50, 60, 75, 0.6); }
+        #fran:not(.walking) .robe { animation: breathe 2.6s ease-in-out infinite; }
+        #fran:not(.walking) .hair-side-l { animation: hair-bounce 3s ease-in-out infinite 0.1s; }
+        #fran:not(.walking) .hair-side-r { animation: hair-bounce 3s ease-in-out infinite 0.5s; }
+
+        /* Gil (young attendant — orange-brown hair, simpler robes) */
+        #gil .hair, #gil .hair-side-l, #gil .hair-side-r { background: #b87030; }
+        #gil .eye-l, #gil .eye-r { background: #6a5030; }
+        #gil .robe { background: linear-gradient(180deg, #4a4040 0%, #3a3030 100%); }
+        #gil .arm-l, #gil .arm-r { background: #4a4040; }
+        #gil .cape { background: rgba(60, 50, 45, 0.5); }
+        #gil:not(.walking) .robe { animation: breathe 2.3s ease-in-out infinite; }
+        #gil:not(.walking) .hair-side-l { animation: hair-bounce 2.8s ease-in-out infinite; }
+        #gil:not(.walking) .hair-side-r { animation: hair-bounce 2.8s ease-in-out infinite 0.2s; }
+
+        /* Delia (attendant — reddish-pink hair, neat robes) */
+        #delia .hair, #delia .hair-side-l, #delia .hair-side-r { background: #c06080; }
+        #delia .eye-l, #delia .eye-r { background: #8a5070; }
+        #delia .robe { background: linear-gradient(180deg, #3a3040 0%, #2a2030 100%); }
+        #delia .arm-l, #delia .arm-r { background: #3a3040; }
+        #delia .cape { background: rgba(50, 40, 55, 0.5); }
+        #delia .delia-bow { position: absolute; top: 4px; right: 4px; width: 10px; height: 8px; background: #d070a0; border-radius: 50%; }
+        #delia:not(.walking) .robe { animation: breathe 2.5s ease-in-out infinite 0.2s; }
+        #delia:not(.walking) .hair-side-l { animation: hair-bounce 3.1s ease-in-out infinite 0.15s; }
+        #delia:not(.walking) .hair-side-r { animation: hair-bounce 3.1s ease-in-out infinite 0.45s; }
+
+        /* Philine (retainer — light blonde, timid) */
+        #philine .hair, #philine .hair-side-l, #philine .hair-side-r { background: #e0d090; }
+        #philine .eye-l, #philine .eye-r { background: #6a8a50; }
+        #philine .robe { background: linear-gradient(180deg, #4a5040 0%, #3a4030 100%); }
+        #philine .arm-l, #philine .arm-r { background: #4a5040; }
+        #philine .cape { background: rgba(60, 65, 50, 0.5); }
+        #philine:not(.walking) .robe { animation: breathe 2.2s ease-in-out infinite 0.3s; }
+        #philine:not(.walking) .hair-side-l { animation: hair-bounce 3.3s ease-in-out infinite 0.2s; }
+        #philine:not(.walking) .hair-side-r { animation: hair-bounce 3.3s ease-in-out infinite 0.6s; }
+
+        /* Roderick (knight retainer — brown hair, armored look) */
+        #roderick .hair, #roderick .hair-side-l, #roderick .hair-side-r { background: #6a4a30; }
+        #roderick .eye-l, #roderick .eye-r { background: #4a3a28; }
+        #roderick .robe { background: linear-gradient(180deg, #5a5a68 0%, #4a4a58 100%); }
+        #roderick .arm-l, #roderick .arm-r { background: #5a5a68; }
+        #roderick .cape { background: rgba(70, 70, 85, 0.6); }
+        #roderick .rod-pauldron { position: absolute; top: 26px; left: -3px; width: 46px; height: 10px; background: linear-gradient(180deg, #7a7a8a, #5a5a6a); border-radius: 4px 4px 0 0; z-index: -1; }
+        #roderick:not(.walking) .robe { animation: breathe 3s ease-in-out infinite; }
+        #roderick:not(.walking) .hair-side-l { animation: hair-bounce 3.5s ease-in-out infinite; }
+        #roderick:not(.walking) .hair-side-r { animation: hair-bounce 3.5s ease-in-out infinite 0.3s; }
+
+        /* Angelica (knight — silver/white hair, strong) */
+        #angelica .hair, #angelica .hair-side-l, #angelica .hair-side-r { background: #c0c8d8; }
+        #angelica .eye-l, #angelica .eye-r { background: #4060a0; }
+        #angelica .robe { background: linear-gradient(180deg, #5a6070 0%, #4a5060 100%); }
+        #angelica .arm-l, #angelica .arm-r { background: #5a6070; }
+        #angelica .cape { background: rgba(70, 75, 90, 0.6); }
+        #angelica .ang-pauldron { position: absolute; top: 26px; left: -4px; width: 48px; height: 12px; background: linear-gradient(180deg, #8a8a9a, #6a6a7a); border-radius: 5px 5px 0 0; z-index: -1; }
+        #angelica:not(.walking) .robe { animation: breathe 2.7s ease-in-out infinite 0.1s; }
+        #angelica:not(.walking) .hair-side-l { animation: hair-bounce 3s ease-in-out infinite 0.3s; }
+        #angelica:not(.walking) .hair-side-r { animation: hair-bounce 3s ease-in-out infinite 0.7s; }
+
+        /* Hartmut (zealous retainer — dark hair, ornate robes) */
+        #hartmut .hair, #hartmut .hair-side-l, #hartmut .hair-side-r { background: #2a2040; }
+        #hartmut .eye-l, #hartmut .eye-r { background: #4a3060; }
+        #hartmut .robe { background: linear-gradient(180deg, #3a2050 0%, #2a1040 100%); }
+        #hartmut .arm-l, #hartmut .arm-r { background: #3a2050; }
+        #hartmut .cape { background: rgba(45, 25, 60, 0.6); }
+        #hartmut .hart-stole { position: absolute; top: 27px; left: 8px; width: 24px; height: 30px; background: linear-gradient(180deg, rgba(200, 170, 80, 0.4), rgba(180, 150, 60, 0.2)); border-radius: 2px; z-index: 1; }
+        #hartmut:not(.walking) .robe { animation: breathe 2.4s ease-in-out infinite; }
+        #hartmut:not(.walking) .hair-side-l { animation: hair-bounce 2.9s ease-in-out infinite 0.1s; }
+        #hartmut:not(.walking) .hair-side-r { animation: hair-bounce 2.9s ease-in-out infinite 0.4s; }
 
         .char-shadow { position: absolute; width: 34px; height: 8px; background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%); z-index: 9; pointer-events: none; }
 
@@ -461,6 +535,8 @@
         /* HUD */
         #hud { position: fixed; top: 10px; left: 10px; color: #b0d4ff; font-size: 1.1rem; z-index: 20; text-shadow: 0 0 8px rgba(60, 140, 255, 0.5); }
         #hud.library-hud { color: #e8d0a0; text-shadow: 0 0 8px rgba(200, 160, 80, 0.5); }
+        #hud.sovereignty-hud { color: #c0d0e8; text-shadow: 0 0 8px rgba(120, 150, 200, 0.5); }
+        #hud.temple-hud { color: #e8d0a0; text-shadow: 0 0 8px rgba(200, 160, 80, 0.5); }
 
         /* Mobile */
         #mobile-controls { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 20; flex-direction: column; align-items: center; gap: 6px; }
@@ -546,6 +622,244 @@
         .choice-btn:active {
             transform: translateX(2px) scale(0.98);
         }
+
+        /* ===== QUEST HUD (top right) ===== */
+        #quest-hud {
+            position: fixed; top: 10px; right: 10px;
+            color: #b0d4ff; font-size: 0.95rem; z-index: 20;
+            text-shadow: 0 0 8px rgba(60, 140, 255, 0.5);
+            text-align: right;
+            max-width: 260px;
+            padding: 6px 12px;
+            background: rgba(15, 12, 40, 0.5);
+            border: 1px solid rgba(150, 180, 255, 0.2);
+            border-radius: 8px;
+            opacity: 0.85;
+            transition: all 0.4s ease;
+        }
+        #quest-hud.library-quest-hud {
+            color: #e8d0a0;
+            text-shadow: 0 0 8px rgba(200, 160, 80, 0.5);
+            background: rgba(40, 25, 10, 0.5);
+            border-color: rgba(200, 170, 100, 0.2);
+        }
+        #quest-hud.sovereignty-quest-hud {
+            color: #c0d0e8;
+            text-shadow: 0 0 8px rgba(120, 150, 200, 0.5);
+            background: rgba(10, 15, 30, 0.5);
+            border-color: rgba(120, 150, 200, 0.2);
+        }
+        #quest-hud.temple-quest-hud {
+            color: #e8d0a0;
+            text-shadow: 0 0 8px rgba(200, 160, 80, 0.5);
+            background: rgba(40, 25, 10, 0.5);
+            border-color: rgba(200, 170, 100, 0.2);
+        }
+        #quest-hud-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            margin-bottom: 2px;
+        }
+
+        /* ===== SOVEREIGNTY INTERROGATION ROOM (small, windowless, oppressive) ===== */
+        #sovereignty { width: 600px; background: linear-gradient(180deg, #0a0a14 0%, #15152a 40%, #1e1e2a 40%, #141420 100%); display: none; }
+        #sovereignty .floor {
+            position: absolute; bottom: 0; width: 100%; height: 60%;
+            background:
+                repeating-linear-gradient(90deg, rgba(80, 80, 100, 0.12) 0px, rgba(80, 80, 100, 0.12) 1px, transparent 1px, transparent 60px),
+                repeating-linear-gradient(0deg, rgba(80, 80, 100, 0.12) 0px, rgba(80, 80, 100, 0.12) 1px, transparent 1px, transparent 60px),
+                linear-gradient(180deg, #1e1e2a 0%, #141420 100%);
+        }
+        #sovereignty .wall {
+            position: absolute; top: 0; width: 100%; height: 40%;
+            background:
+                repeating-linear-gradient(90deg, rgba(50, 50, 70, 0.4) 0px, rgba(50, 50, 70, 0.4) 2px, transparent 2px, transparent 40px),
+                repeating-linear-gradient(0deg, rgba(50, 50, 70, 0.35) 0px, rgba(50, 50, 70, 0.35) 2px, transparent 2px, transparent 20px),
+                linear-gradient(180deg, #0a0a14 0%, #15152a 100%);
+        }
+        /* Bare stone walls on the sides */
+        .sov-wall-edge {
+            position: absolute; bottom: 0;
+            width: 20px; height: 100%;
+            background: linear-gradient(90deg, #2a2a3a, #1a1a2a);
+            z-index: 5;
+        }
+        .sov-wall-edge.left { left: 0; border-right: 2px solid #3a3a4a; }
+        .sov-wall-edge.right { right: 0; border-left: 2px solid #3a3a4a; }
+        /* Single dim lantern on the wall */
+        .sov-lantern {
+            position: absolute; top: 15%;
+            width: 12px; height: 20px;
+            z-index: 6;
+        }
+        .sov-lantern::before {
+            content: ''; position: absolute;
+            bottom: 0; left: 3px;
+            width: 6px; height: 14px;
+            background: linear-gradient(180deg, #4a4a60, #3a3a50);
+            border-radius: 2px;
+        }
+        .sov-lantern::after {
+            content: ''; position: absolute;
+            top: -6px; left: 0;
+            width: 12px; height: 10px;
+            background: radial-gradient(ellipse, rgba(180, 160, 120, 0.6) 0%, rgba(150, 130, 90, 0.3) 50%, transparent 70%);
+            border-radius: 50%;
+            animation: candle-flicker 1s ease-in-out infinite alternate;
+        }
+        .sov-lantern-glow {
+            position: absolute;
+            width: 120px; height: 120px;
+            background: radial-gradient(ellipse, rgba(180, 160, 120, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ===== EHRENFEST TEMPLE (white walls, blue tapestries, divine spring) ===== */
+        #temple { width: 1800px; background: linear-gradient(180deg, #d0d4da 0%, #e0e4ea 40%, #c8ccd4 40%, #b8bcc4 100%); display: none; }
+        #temple .floor {
+            position: absolute; bottom: 0; width: 100%; height: 60%;
+            background:
+                repeating-linear-gradient(90deg, rgba(160, 170, 185, 0.2) 0px, rgba(160, 170, 185, 0.2) 1px, transparent 1px, transparent 90px),
+                repeating-linear-gradient(0deg, rgba(160, 170, 185, 0.2) 0px, rgba(160, 170, 185, 0.2) 1px, transparent 1px, transparent 90px),
+                linear-gradient(180deg, #c8ccd4 0%, #b8bcc4 100%);
+        }
+        #temple .wall {
+            position: absolute; top: 0; width: 100%; height: 40%;
+            background:
+                repeating-linear-gradient(90deg, rgba(180, 185, 195, 0.25) 0px, rgba(180, 185, 195, 0.25) 2px, transparent 2px, transparent 70px),
+                repeating-linear-gradient(0deg, rgba(180, 185, 195, 0.2) 0px, rgba(180, 185, 195, 0.2) 2px, transparent 2px, transparent 35px),
+                linear-gradient(180deg, #d0d4da 0%, #e0e4ea 100%);
+        }
+        /* Blue tapestries — divine color of spring */
+        .temple-tapestry {
+            position: absolute; top: 5%;
+            width: 44px; height: 100px;
+            background: linear-gradient(180deg, #1a40a0 0%, #2050c0 30%, #1a40a0 60%, #1838a0 100%);
+            border: 2px solid #3060d0;
+            border-radius: 0 0 22px 22px;
+            z-index: 4;
+            box-shadow: 0 0 12px rgba(40, 80, 200, 0.2);
+        }
+        .temple-tapestry::after {
+            content: ''; position: absolute;
+            top: 15px; left: 50%; transform: translateX(-50%);
+            width: 18px; height: 18px;
+            background: radial-gradient(circle, rgba(180, 210, 255, 0.6) 0%, rgba(100, 160, 255, 0.3) 60%, transparent 70%);
+            border-radius: 50%;
+        }
+        .temple-tapestry::before {
+            content: ''; position: absolute;
+            top: 45px; left: 50%; transform: translateX(-50%);
+            width: 24px; height: 2px;
+            background: rgba(150, 190, 255, 0.4);
+        }
+        .temple-pillar {
+            position: absolute; bottom: 0;
+            width: 36px; height: 100%;
+            background: linear-gradient(90deg, #c0c4cc 0%, #e0e4ec 30%, #d0d4dc 60%, #c0c4cc 100%);
+            border-left: 2px solid #e0e4ec;
+            border-right: 2px solid #a8acb4;
+            z-index: 5;
+        }
+        .temple-pillar::before {
+            content: ''; position: absolute;
+            top: 0; left: -6px; width: 48px; height: 18px;
+            background: linear-gradient(180deg, #e0e4ec, #d0d4dc);
+            border-radius: 4px 4px 0 0;
+        }
+        .temple-pillar::after {
+            content: ''; position: absolute;
+            bottom: 0; left: -4px; width: 44px; height: 14px;
+            background: linear-gradient(180deg, #d0d4dc, #c0c4cc);
+        }
+        .stained-glass {
+            position: absolute; top: 3%;
+            width: 70px; height: 120px;
+            border: 3px solid #a0a8b8;
+            border-radius: 35px 35px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(60, 140, 255, 0.2);
+        }
+        .stained-glass-inner {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(60, 140, 255, 0.35) 0%,
+                rgba(100, 180, 255, 0.25) 25%,
+                rgba(40, 100, 220, 0.3) 50%,
+                rgba(80, 160, 255, 0.2) 75%,
+                rgba(60, 140, 255, 0.35) 100%);
+        }
+        .stained-glass::after {
+            content: ''; position: absolute;
+            top: 50%; left: 0; right: 0; height: 2px;
+            background: #a0a8b8; z-index: 1;
+        }
+        .stained-glass::before {
+            content: ''; position: absolute;
+            top: 0; bottom: 0; left: 50%; width: 2px;
+            background: #a0a8b8; z-index: 1;
+        }
+        .temple-altar {
+            position: absolute; bottom: 60%;
+            width: 100px; height: 50px;
+            background: linear-gradient(180deg, #7a5a38 0%, #5a3d20 100%);
+            border: 2px solid #8a6a48;
+            border-radius: 4px;
+        }
+        .temple-altar::before {
+            content: ''; position: absolute;
+            top: 4px; left: 50%; transform: translateX(-50%);
+            width: 30px; height: 30px;
+            background: radial-gradient(circle, rgba(100, 180, 255, 0.7) 0%, rgba(60, 140, 255, 0.3) 60%, transparent 70%);
+            border-radius: 50%;
+            animation: altar-glow 3s ease-in-out infinite;
+        }
+        @keyframes altar-glow {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+        .temple-candle {
+            position: absolute; bottom: 62%;
+            width: 16px; height: 35px;
+        }
+        .temple-candle::before {
+            content: ''; position: absolute;
+            bottom: 0; left: 4px;
+            width: 8px; height: 25px;
+            background: linear-gradient(180deg, #e8d8b0, #c8b890);
+            border-radius: 2px;
+        }
+        .temple-candle::after {
+            content: ''; position: absolute;
+            top: -6px; left: 2px;
+            width: 12px; height: 12px;
+            background: radial-gradient(ellipse, #ffcc44 0%, #ff9922 40%, transparent 70%);
+            border-radius: 50%;
+            animation: candle-flicker 0.8s ease-in-out infinite alternate;
+        }
+
+        /* Sovereignty-themed dialogue */
+        #dialogue-box.sovereignty-theme {
+            background: rgba(10, 15, 30, 0.94);
+            border-color: rgba(120, 150, 200, 0.4);
+            box-shadow: 0 0 30px rgba(80, 110, 200, 0.2);
+        }
+        .sovereignty-theme #dialogue-name { color: #c0d0e8; text-shadow: 0 0 6px rgba(120, 150, 200, 0.5); }
+        .sovereignty-theme #dialogue-text { color: #d8e0f0; }
+        .sovereignty-theme #dialogue-next { color: rgba(150, 180, 220, 0.6); }
+
+        /* Temple-themed dialogue */
+        #dialogue-box.temple-theme {
+            background: rgba(40, 25, 10, 0.94);
+            border-color: rgba(200, 170, 100, 0.4);
+            box-shadow: 0 0 30px rgba(200, 150, 50, 0.2);
+        }
+        .temple-theme #dialogue-name { color: #e8d0a0; text-shadow: 0 0 6px rgba(200, 170, 100, 0.5); }
+        .temple-theme #dialogue-text { color: #f0e8d8; }
+        .temple-theme #dialogue-next { color: rgba(220, 190, 120, 0.6); }
     </style>
 </head>
 <body>
@@ -641,6 +955,45 @@
                 <div class="floor"></div>
             </div>
 
+            <!-- Sovereignty Interrogation Room (small, windowless) -->
+            <div class="room" id="sovereignty">
+                <div class="wall"></div>
+                <div class="sov-wall-edge left"></div>
+                <div class="sov-wall-edge right"></div>
+                <div class="sov-lantern" style="left:290px;"></div>
+                <div class="sov-lantern-glow" style="left:230px; top:10%;"></div>
+                <div class="floor"></div>
+            </div>
+
+            <!-- Ehrenfest Temple -->
+            <div class="room" id="temple">
+                <div class="wall">
+                    <div class="stained-glass" style="left:150px;"><div class="stained-glass-inner"></div></div>
+                    <div class="stained-glass" style="left:500px;"><div class="stained-glass-inner"></div></div>
+                    <div class="stained-glass" style="left:850px;"><div class="stained-glass-inner"></div></div>
+                    <div class="stained-glass" style="left:1200px;"><div class="stained-glass-inner"></div></div>
+                    <div class="stained-glass" style="left:1550px;"><div class="stained-glass-inner"></div></div>
+                </div>
+                <div class="temple-pillar" style="left:60px;"></div>
+                <div class="temple-tapestry" style="left:160px;"></div>
+                <div class="temple-pillar" style="left:350px;"></div>
+                <div class="temple-tapestry" style="left:470px;"></div>
+                <div class="temple-pillar" style="left:700px;"></div>
+                <div class="temple-tapestry" style="left:820px;"></div>
+                <div class="temple-pillar" style="left:1050px;"></div>
+                <div class="temple-tapestry" style="left:1170px;"></div>
+                <div class="temple-pillar" style="left:1400px;"></div>
+                <div class="temple-tapestry" style="left:1520px;"></div>
+                <div class="temple-pillar" style="left:1720px;"></div>
+                <div class="temple-altar" style="left:900px;"></div>
+                <div class="temple-candle" style="left:300px;"></div>
+                <div class="temple-candle" style="left:600px;"></div>
+                <div class="temple-candle" style="left:950px;"></div>
+                <div class="temple-candle" style="left:1300px;"></div>
+                <div class="temple-candle" style="left:1600px;"></div>
+                <div class="floor"></div>
+            </div>
+
             <!-- Characters -->
             <div class="char-shadow" id="myne-shadow"></div>
             <div class="character" id="myne">
@@ -670,6 +1023,68 @@
                 <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
                 <div class="foot-l"></div><div class="foot-r"></div>
             </div>
+
+            <!-- Attendants & Retainers -->
+            <div class="char-shadow" id="fran-shadow" style="display:none;"></div>
+            <div class="character" id="fran" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="gil-shadow" style="display:none;"></div>
+            <div class="character" id="gil" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="delia-shadow" style="display:none;"></div>
+            <div class="character" id="delia" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="delia-bow"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="philine-shadow" style="display:none;"></div>
+            <div class="character" id="philine" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="roderick-shadow" style="display:none;"></div>
+            <div class="character" id="roderick" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="rod-pauldron"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="angelica-shadow" style="display:none;"></div>
+            <div class="character" id="angelica" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="ang-pauldron"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="hartmut-shadow" style="display:none;"></div>
+            <div class="character" id="hartmut" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div><div class="eye-l"></div><div class="eye-r"></div>
+                <div class="hart-stole"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
         </div>
 
         <div id="dialogue-box">
@@ -682,6 +1097,7 @@
             <div class="choice-buttons" id="choice-buttons"></div>
         </div>
         <div id="hud">Royal Academy — Arrow keys / WASD to move</div>
+        <div id="quest-hud"><div id="quest-hud-label">objective</div><div id="quest-hud-text">Talk to Hannelore</div></div>
         <div id="mobile-controls">
             <div class="mobile-row"><button id="btn-up">&#8593;</button></div>
             <div class="mobile-row">
@@ -719,6 +1135,20 @@
         const choiceBox = document.getElementById('choice-box');
         const choicePrompt = document.getElementById('choice-prompt');
         const choiceButtons = document.getElementById('choice-buttons');
+        const sovereigntyRoom = document.getElementById('sovereignty');
+        const templeRoom = document.getElementById('temple');
+        const questHud = document.getElementById('quest-hud');
+        const questHudText = document.getElementById('quest-hud-text');
+
+        // Attendants & Retainers
+        const retainerIds = ['fran', 'gil', 'delia', 'philine', 'roderick', 'angelica', 'hartmut'];
+        const retainers = {};
+        retainerIds.forEach(id => {
+            retainers[id] = {
+                el: document.getElementById(id),
+                shadow: document.getElementById(id + '-shadow'),
+            };
+        });
 
         // ===== WORLD =====
         let currentRoom = 'academy';
@@ -747,6 +1177,63 @@
         let hanneloreX = 800, hanneloreY = 60;
         let hanneloreWalking = false, hanneloreTargetX = null;
         let hanneloreVisible = true;
+
+        // ===== QUEST HUD =====
+        let questTextValue = 'Talk to Hannelore';
+        function updateQuest(text) {
+            questTextValue = text;
+            questHudText.textContent = text;
+        }
+
+        // ===== HELPER FUNCTIONS =====
+        function setDialogueTheme(theme) {
+            dialogueBox.className = '';
+            if (theme) dialogueBox.classList.add(theme);
+        }
+        function setHudTheme(hudClass, questClass) {
+            hud.className = '';
+            questHud.className = '';
+            if (hudClass) hud.classList.add(hudClass);
+            if (questClass) questHud.classList.add(questClass);
+        }
+        function hideAllRooms() {
+            academyRoom.style.display = 'none';
+            libraryRoom.style.display = 'none';
+            sovereigntyRoom.style.display = 'none';
+            templeRoom.style.display = 'none';
+        }
+        function hideAllNPCs() {
+            hannelore.style.display = 'none';
+            hanneloreShadow.style.display = 'none';
+            hanneloreVisible = false;
+            sylvester.style.display = 'none';
+            sylvesterShadow.style.display = 'none';
+            sylvesterVisible = false;
+            retainerIds.forEach(id => {
+                retainers[id].el.style.display = 'none';
+                retainers[id].shadow.style.display = 'none';
+            });
+        }
+
+        function showRetainersInTemple() {
+            // Position retainers in a semicircle around the altar area
+            const positions = [
+                { id: 'fran', x: 700, y: 60, facing: 'right' },      // left of altar, facing Myne
+                { id: 'gil', x: 780, y: 80, facing: 'right' },        // behind Fran
+                { id: 'delia', x: 850, y: 50, facing: 'right' },      // near altar
+                { id: 'philine', x: 1050, y: 80, facing: 'left' },    // right side, shy in back
+                { id: 'roderick', x: 1120, y: 60, facing: 'left' },   // right of altar
+                { id: 'angelica', x: 1200, y: 55, facing: 'left' },   // far right, guarding
+                { id: 'hartmut', x: 950, y: 45, facing: 'right' },    // right next to altar, dramatic
+            ];
+            positions.forEach(p => {
+                const r = retainers[p.id];
+                r.el.style.display = 'block';
+                r.shadow.style.display = 'block';
+                r.el.style.transform = p.facing === 'left' ? 'scaleX(-1)' : '';
+                positionCharacter(r.el, r.shadow, p.x, p.y);
+            });
+        }
 
         // ===== CAMERA =====
         let camX = 0;
@@ -865,12 +1352,12 @@
 
             setTimeout(() => {
                 // Switch rooms
-                academyRoom.style.display = 'none';
+                hideAllRooms();
                 libraryRoom.style.display = 'block';
                 currentRoom = 'library';
                 worldWidth = 2800;
 
-                // Hide Hannelore for now (she can appear in library later)
+                // Hide Hannelore
                 hannelore.style.display = 'none';
                 hanneloreShadow.style.display = 'none';
                 hanneloreVisible = false;
@@ -885,8 +1372,9 @@
 
                 // Update HUD style
                 hud.textContent = 'Royal Academy Library';
-                hud.classList.add('library-hud');
-                dialogueBox.classList.add('library-theme');
+                setHudTheme('library-hud', 'library-quest-hud');
+                setDialogueTheme('library-theme');
+                updateQuest('Explore the library');
 
                 // Fade out transition
                 setTimeout(() => {
@@ -902,6 +1390,135 @@
                     }, 500);
                 }, 800);
             }, 1200);
+        }
+
+        // ===== TRANSITION TO SOVEREIGNTY =====
+        function transitionToSovereignty() {
+            transitionText.textContent = 'Taken to the Sovereignty for questioning...';
+            transitionOverlay.classList.add('active');
+            setTimeout(() => {
+                hideAllRooms();
+                hideAllNPCs();
+                sovereigntyRoom.style.display = 'block';
+                currentRoom = 'sovereignty';
+                worldWidth = 600;
+                myneX = 250; myneY = 60;
+                lastFacing = 'right'; camX = 0;
+                positionCharacter(myne, myneShadow, myneX, myneY);
+                updateCamera();
+                hud.textContent = 'Sovereignty — Interrogation Room';
+                setHudTheme('sovereignty-hud', 'sovereignty-quest-hud');
+                setDialogueTheme('sovereignty-theme');
+                setTimeout(() => {
+                    transitionOverlay.classList.remove('active');
+                    setTimeout(() => { runSovereigntyScene(); }, 500);
+                }, 800);
+            }, 1200);
+        }
+
+        // ===== TRANSITION TO TEMPLE =====
+        function transitionToTemple() {
+            transitionText.textContent = 'Sneaking to the Ehrenfest Temple...';
+            transitionOverlay.classList.add('active');
+            setTimeout(() => {
+                hideAllRooms();
+                hideAllNPCs();
+                templeRoom.style.display = 'block';
+                currentRoom = 'temple';
+                worldWidth = 1800;
+                myneX = 200; myneY = 60;
+                lastFacing = 'right'; camX = 0;
+                positionCharacter(myne, myneShadow, myneX, myneY);
+                updateCamera();
+                hud.textContent = 'Ehrenfest Temple';
+                setHudTheme('temple-hud', 'temple-quest-hud');
+                setDialogueTheme('temple-theme');
+                showRetainersInTemple();
+                setTimeout(() => {
+                    transitionOverlay.classList.remove('active');
+                    setTimeout(() => { runTempleScene(); }, 500);
+                }, 800);
+            }, 1200);
+        }
+
+        // ===== SOVEREIGNTY SCENE =====
+        function runSovereigntyScene() {
+            showDialogue([
+                { name: 'Myne', text: 'This room is so small... and there are no windows. It feels like a prison cell.' },
+                { name: 'Sovereignty Official', text: 'Halt. You are the archnoble Rozemyne of Ehrenfest, correct?' },
+                { name: 'Myne', text: 'Y-yes, that is me.' },
+                { name: 'Sovereignty Official', text: "We received Aub Ehrenfest's message. He claims you found... the Grutrissheit." },
+                { name: 'Head Librarian', text: 'How did an archduke candidate from Ehrenfest come to possess the Grutrissheit?' },
+                { name: 'Myne', text: 'I just found it on the floor! In the Royal Academy library! I did not even know what it was at first!' },
+                { name: 'Sovereignty Official', text: 'You expect us to believe that? The most sacred artifact in all of Yurgenschmidt was just... lying on the floor?' },
+                { name: 'Head Librarian', text: 'Were you trying to claim the throne? This is treason.' },
+                { name: 'Myne', text: 'Treason?! I picked up a book! I thought someone dropped it!' },
+                { name: 'Myne', text: 'I love books more than anything, but I would never commit treason over one!' },
+                { name: 'Myne', text: '...Probably.' },
+                { name: 'Sovereignty Official', text: '...' },
+                { name: 'Head Librarian', text: 'She did turn it in voluntarily. If she truly wanted to claim the throne, she would not have reported it.' },
+                { name: 'Sovereignty Official', text: 'That is... a fair point. Very well.' },
+                { name: 'Sovereignty Official', text: 'The Grutrissheit will be returned to its rightful place. Hand it over.' },
+                { name: 'Myne', text: '...' },
+                { name: 'Myne', text: 'Can I... can I at least look at one more page before\u2014' },
+                { name: 'Sovereignty Official', text: 'No.' },
+                { name: 'Myne', text: '...Fine.' },
+                { name: 'Head Librarian', text: 'We acknowledge your cooperation, Lady Rozemyne. As an archduke candidate, your willingness to report this speaks well of Ehrenfest.' },
+                { name: 'Sovereignty Official', text: 'Indeed. Possessing the Grutrissheit makes you a Zent candidate by right... but given the circumstances, we will overlook that claim.' },
+                { name: 'Sovereignty Official', text: 'You are to speak of this to no one. Not a single soul. Is that understood?' },
+                { name: 'Myne', text: 'I understand.' },
+                { name: 'Myne', text: '(Goodbye, beautiful book... I barely got to know you...)' },
+            ], () => {
+                updateQuest('The book has been taken...');
+                playerCanMove = true;
+            });
+        }
+
+        // ===== TEMPLE SCENE =====
+        function runTempleScene() {
+            showDialogue([
+                { name: 'Myne', text: 'Good, everyone is here. I need to tell you all something important.' },
+                { name: 'Fran', text: 'Lady Rozemyne, what is the matter? You look unusually serious.' },
+                { name: 'Myne', text: 'I found... the Grutrissheit. The holy book of the gods. And I am keeping it.' },
+                { name: 'Fran', text: 'Lady Rozemyne, I must strongly advise against this. As an archduke candidate, you already draw enough attention. If the Sovereignty discovers you have hidden it, the consequences would be catastrophic!' },
+                { name: 'Myne', text: 'I know, Fran. But think of what we could learn from it! Besides... having the Grutrissheit makes me a Zent candidate. That has to count for something.' },
+                { name: 'Fran', text: 'A Zent candidate?! Lady Rozemyne, that makes this even MORE dangerous, not less!' },
+                { name: 'Gil', text: 'L-Lady Rozemyne... are we going to get in trouble? I do not want to go back to the orphanage...' },
+                { name: 'Myne', text: 'Nobody is going back to the orphanage, Gil. I promise.' },
+                { name: 'Delia', text: 'With all due respect, Lady Rozemyne, we cannot hide something this important forever. Someone will find out eventually.' },
+                { name: 'Delia', text: 'What happens when an auditor visits? Or when the Sovereignty sends inspectors?' },
+                { name: 'Myne', text: 'We will cross that bridge when we come to it!' },
+                { name: 'Philine', text: "Um... Lady Rozemyne... this seems very dangerous... I am worried about everyone's safety..." },
+                { name: 'Myne', text: 'I appreciate your concern, Philine. But I have made up my mind.' },
+                { name: 'Roderick', text: 'Lady Rozemyne, please consider your duty to Ehrenfest. As an archduke candidate — and now a Zent candidate — you have an enormous responsibility.' },
+                { name: 'Roderick', text: 'Hiding the Grutrissheit puts everyone at risk. Lord Sylvester, Lady Florencia, all of us.' },
+                { name: 'Myne', text: 'I know my duty, Roderick. And part of that duty is seeking knowledge!' },
+                { name: 'Angelica', text: 'Lady Rozemyne! If anyone tries to take the book from you, I will fight them!' },
+                { name: 'Angelica', text: 'I do not care if it is the Sovereignty or the king himself! My sword is yours!' },
+                { name: 'Fran', text: '...That is not really the issue here, Angelica.' },
+                { name: 'Roderick', text: 'Please do not fight the king, Angelica.' },
+                { name: 'Hartmut', text: 'Everyone, EVERYONE! You are all missing the point!' },
+                { name: 'Hartmut', text: 'Lady Rozemyne finding the Grutrissheit is clearly divine will! The gods themselves have chosen her as the true Zent!' },
+                { name: 'Hartmut', text: 'She is the Saint of Ehrenfest! An archduke candidate AND a Zent candidate! The living embodiment of the goddess! Of COURSE the holy book came to her!' },
+                { name: 'Hartmut', text: 'We should be celebrating! This is the greatest day in the history of Ehrenfest!' },
+                { name: 'Fran', text: '...Please stop, Hartmut.' },
+                { name: 'Gil', text: 'He is making it worse...' },
+                { name: 'Delia', text: 'I think I have a headache.' },
+                { name: 'Roderick', text: 'Hartmut, you are not helping.' },
+                { name: 'Hartmut', text: 'I am ALWAYS helping! Everything I do is in service of Lady Rozemyne!' },
+                { name: 'Myne', text: 'Thank you, Hartmut. I think.' },
+                { name: 'Myne', text: 'Listen, everyone. I know this is risky. I know it is dangerous.' },
+                { name: 'Myne', text: 'But this book contains knowledge that has been lost for generations. Formulas, prayers, secrets of the gods!' },
+                { name: 'Myne', text: 'I cannot just hand it over to the Sovereignty where it will sit in a vault collecting dust!' },
+                { name: 'Fran', text: '*sigh* ...I can see there is no changing your mind, Lady Rozemyne.' },
+                { name: 'Myne', text: 'There is not. Now... the first order of business is figuring out how to read divine script.' },
+                { name: 'Myne', text: 'I WILL learn to read the Book of Mestionora. No matter how long it takes!' },
+                { name: 'Hartmut', text: 'GLORIOUS!' },
+                { name: 'Fran', text: 'Please stop shouting, Hartmut.' },
+            ], () => {
+                updateQuest('Find a way to read the Book of Mestionora');
+                playerCanMove = true;
+            });
         }
 
         // ===== INTRO =====
@@ -928,7 +1545,10 @@
                 { name: 'Hannelore', text: 'Yes! I heard there might be rare volumes from Dunkelfelger and Klassenberg.' },
                 { name: 'Hannelore', text: 'The meeting room is further down the hall. We should hurry before it starts!' },
                 { name: 'Myne', text: 'Books from other duchies... this is the best day ever! Let us go, Hannelore!' },
-            ], transitionToLibrary);
+            ], () => {
+                updateQuest('Explore the library');
+                transitionToLibrary();
+            });
         }
 
         // ===== GRUTRISSHEIT GRAB =====
@@ -945,6 +1565,8 @@
             heldBook.className = 'grutrissheit-held';
             myne.appendChild(heldBook);
 
+            updateQuest('What is this book?');
+
             // Casual dialogue — she thinks it's just a book on the floor
             setTimeout(() => {
                 showDialogue([
@@ -952,9 +1574,9 @@
                     { name: 'Myne', text: 'The cover is pretty. Must be one of the older volumes.' },
                     { name: 'Myne', text: 'I will just carry it with me and put it back on the right shelf later.' },
                 ], () => {
-                    // After picking up the book, let player walk a bit, then Sylvester appears
+                    // After picking up the book, Sylvester appears quickly
                     playerCanMove = true;
-                    setTimeout(triggerSylvesterEncounter, 3000);
+                    setTimeout(triggerSylvesterEncounter, 1000);
                 });
             }, 300);
         }
@@ -986,11 +1608,13 @@
             playerCanMove = false;
             velX = 0; velY = 0;
 
+            updateQuest('Talk to Sylvester');
+
             // Sylvester appears from the right, walking toward Myne
             sylvester.style.display = 'block';
             sylvesterShadow.style.display = 'block';
             sylvesterVisible = true;
-            sylvesterX = myneX + 500;
+            sylvesterX = Math.min(myneX + 300, worldWidth - CHAR_W);
             sylvesterY = myneY;
             sylvesterTargetX = myneX + 70;
             sylvester.style.transform = 'scaleX(1)';
@@ -1018,8 +1642,10 @@
                 { name: 'Myne', text: 'OH.' },
                 { name: 'Myne', text: 'I thought it was just a pretty book someone left out!!' },
                 { name: 'Sylvester', text: 'How did you even — never mind. This is a disaster. If anyone finds out you have this...' },
+                { name: 'Sylvester', text: 'As an archduke candidate of Ehrenfest, you already have a target on your back. But this... this makes you a Zent candidate.' },
                 { name: 'Sylvester', text: 'Every archducal family in the country will want to use you. Or eliminate you.' },
             ], () => {
+                updateQuest('What should Myne do?');
                 // Present the choice
                 showChoice('What should Myne do?', [
                     {
@@ -1035,6 +1661,7 @@
         }
 
         function choiceReport() {
+            updateQuest('Go to the Sovereignty');
             showDialogue([
                 { name: 'Myne', text: 'You are right. This is too dangerous to keep hidden.' },
                 { name: 'Myne', text: 'We should report this to the Sovereignty. If the Zent lost it, they need to know.' },
@@ -1045,10 +1672,11 @@
                 { name: 'Sylvester', text: 'Ha! At least you have some sense. Come, we will go together.' },
                 { name: 'Sylvester', text: 'I will send a message to the Sovereignty immediately. Stay close to me.' },
                 { name: 'Myne', text: '(I wonder if they would let me read just one page before handing it over...)' },
-            ]);
+            ], transitionToSovereignty);
         }
 
         function choiceKeepSecret() {
+            updateQuest('Hide the book');
             showDialogue([
                 { name: 'Myne', text: '...What if we just... did not tell anyone?' },
                 { name: 'Sylvester', text: 'WHAT?!' },
@@ -1064,7 +1692,7 @@
                 { name: 'Myne', text: '...I cannot read any of it. It is all in divine script.' },
                 { name: 'Sylvester', text: 'Of course it is. You just committed treason for a book you cannot read.' },
                 { name: 'Myne', text: 'I will LEARN to read it! Just give me time!' },
-            ]);
+            ], transitionToTemple);
         }
 
         // ===== GAME LOOP =====
@@ -1085,7 +1713,7 @@
             if (sylvesterWalking && sylvesterTargetX !== null) {
                 const dx = sylvesterTargetX - sylvesterX;
                 if (Math.abs(dx) > 3) {
-                    sylvesterX += Math.sign(dx) * 2.5;
+                    sylvesterX += Math.sign(dx) * 4;
                     sylvester.classList.add('walking');
                 } else {
                     sylvesterX = sylvesterTargetX;
@@ -1144,6 +1772,7 @@
             camX = myneX - window.innerWidth / 2;
             positionCharacter(myne, myneShadow, myneX, myneY);
             updateCamera();
+            updateQuest('Talk to Hannelore');
             requestAnimationFrame(gameLoop);
             setTimeout(runIntro, 800);
         });

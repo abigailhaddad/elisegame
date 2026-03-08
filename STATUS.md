@@ -11,7 +11,18 @@
 - Sylvester shows up after a few seconds, recognizes the Grutrissheit, and freaks out
 - Player choice: report the Grutrissheit to the Sovereignty OR keep it secret
 - Both paths have unique dialogue scenes
+- **Myne recognized as archduke candidate AND Zent candidate** in dialogue
+- **Attendants & retainers visible in the temple scene** with idle animations:
+  - Fran (gray-haired head attendant)
+  - Gil (orange-haired young attendant)
+  - Delia (pink-haired attendant with hair bow)
+  - Philine (blonde timid retainer)
+  - Roderick (brown-haired knight with pauldrons)
+  - Angelica (silver-haired knight with pauldrons)
+  - Hartmut (dark-haired zealot with ornate stole)
 
 ## What Elise Has Asked For
 - Myne accidentally grabs the Grutrissheit (thinks it's a normal book on the floor)
 - Sylvester finds out and player chooses whether to report it
+- Animations for Myne's attendants and retainers
+- Myne is an archduke candidate AND recognized as a Zent candidate
