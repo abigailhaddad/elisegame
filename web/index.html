@@ -2,30 +2,1151 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elise's Game</title>
+    <title>An Ascendance Of A Bookworm Adventure</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #1a1a2e;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(160deg, #0f0c29 0%, #1a1a3e 50%, #0f0c29 100%);
+            overflow: hidden;
+            font-family: 'Architects Daughter', cursive;
         }
-        h1 {
-            color: #e94560;
-            font-size: 3rem;
+
+        /* ===== TITLE SCREEN ===== */
+        #title-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        #title-screen h1 {
+            color: #b0d4ff;
+            font-size: 2.5rem;
             text-align: center;
+            text-shadow: 0 0 20px rgba(100, 170, 255, 0.6), 0 0 40px rgba(60, 140, 255, 0.3);
+            margin-bottom: 40px;
+        }
+        #play-btn {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.8rem;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(60, 140, 255, 0.5), rgba(100, 180, 255, 0.3));
+            border: 2px solid rgba(150, 200, 255, 0.5);
+            border-radius: 12px;
+            padding: 16px 48px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(100, 170, 255, 0.8);
+            box-shadow: 0 0 20px rgba(60, 140, 255, 0.3);
+        }
+        #play-btn:hover {
+            background: linear-gradient(135deg, rgba(80, 160, 255, 0.7), rgba(120, 200, 255, 0.5));
+            box-shadow: 0 0 30px rgba(60, 140, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* ===== GEM BACKGROUND ===== */
+        .gem-bg {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .gem {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .gem-top {
+            width: 0; height: 0;
+            border-left: 120px solid transparent; border-right: 120px solid transparent;
+            border-bottom: 80px solid rgba(60, 140, 255, 0.4);
+            position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+        }
+        .gem-crown-left {
+            width: 0; height: 0;
+            border-left: 60px solid transparent; border-right: 60px solid transparent;
+            border-bottom: 80px solid rgba(100, 180, 255, 0.35);
+            position: absolute; top: -180px; left: calc(50% - 60px); transform: translateX(-50%);
+        }
+        .gem-crown-right {
+            width: 0; height: 0;
+            border-left: 60px solid transparent; border-right: 60px solid transparent;
+            border-bottom: 80px solid rgba(30, 100, 220, 0.35);
+            position: absolute; top: -180px; left: calc(50% + 60px); transform: translateX(-50%);
+        }
+        .gem-body {
+            width: 240px; height: 0;
+            border-top: 220px solid rgba(50, 130, 255, 0.35);
+            border-left: 120px solid transparent; border-right: 120px solid transparent;
+            position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+        }
+        .gem-facet-left {
+            width: 0; height: 0;
+            border-top: 220px solid rgba(100, 180, 255, 0.2);
+            border-left: 120px solid transparent; border-right: 0 solid transparent;
+            position: absolute; top: -100px; left: calc(50% - 120px);
+        }
+        .gem-facet-right {
+            width: 0; height: 0;
+            border-top: 220px solid rgba(20, 80, 200, 0.25);
+            border-left: 0 solid transparent; border-right: 120px solid transparent;
+            position: absolute; top: -100px; left: 50%;
+        }
+        .sparkle {
+            position: absolute; width: 4px; height: 4px;
+            background: white; border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        .sparkle:nth-child(1) { top: 25%; left: 40%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 35%; left: 55%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { top: 45%; left: 45%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { top: 30%; left: 52%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 55%; left: 48%; animation-delay: 0.3s; }
+        .sparkle:nth-child(6) { top: 40%; left: 60%; animation-delay: 0.8s; }
+        .sparkle:nth-child(7) { top: 50%; left: 42%; animation-delay: 1.2s; }
+        .sparkle:nth-child(8) { top: 33%; left: 47%; animation-delay: 1.7s; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        .gem-glow {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -45%);
+            width: 300px; height: 350px;
+            background: radial-gradient(ellipse, rgba(60, 140, 255, 0.3) 0%, rgba(60, 140, 255, 0.1) 40%, transparent 70%);
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== GAME SCREEN ===== */
+        #game-screen {
+            display: none;
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 2; overflow: hidden;
+        }
+
+        #camera {
+            position: absolute;
+            width: 100%; height: 100%;
+        }
+
+        /* ===== ACADEMY HALLWAY (cool blues) ===== */
+        .room {
+            position: absolute;
+            height: 100%;
+        }
+        #academy { width: 2400px; background: linear-gradient(180deg, #1a1a3e 0%, #2a2a5e 40%, #3a3a4e 40%, #4a4a5e 100%); }
+        #academy .floor {
+            position: absolute; bottom: 0; width: 100%; height: 60%;
+            background:
+                repeating-linear-gradient(90deg, rgba(80, 80, 120, 0.3) 0px, rgba(80, 80, 120, 0.3) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(80, 80, 120, 0.3) 0px, rgba(80, 80, 120, 0.3) 1px, transparent 1px, transparent 80px),
+                linear-gradient(180deg, #3d3555 0%, #2d2545 100%);
+        }
+        #academy .wall {
+            position: absolute; top: 0; width: 100%; height: 40%;
+            background:
+                repeating-linear-gradient(90deg, rgba(60, 50, 80, 0.5) 0px, rgba(60, 50, 80, 0.5) 2px, transparent 2px, transparent 60px),
+                repeating-linear-gradient(0deg, rgba(60, 50, 80, 0.3) 0px, rgba(60, 50, 80, 0.3) 2px, transparent 2px, transparent 30px),
+                linear-gradient(180deg, #1a1535 0%, #2a2050 100%);
+        }
+
+        /* ===== LIBRARY (warm golds/ambers) ===== */
+        #library { width: 2800px; background: linear-gradient(180deg, #2a1a0a 0%, #3d2a15 40%, #4a3520 40%, #3a2a18 100%); display: none; }
+        #library .floor {
+            position: absolute; bottom: 0; width: 100%; height: 60%;
+            background:
+                repeating-linear-gradient(90deg, rgba(120, 90, 50, 0.25) 0px, rgba(120, 90, 50, 0.25) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(120, 90, 50, 0.25) 0px, rgba(120, 90, 50, 0.25) 1px, transparent 1px, transparent 80px),
+                linear-gradient(180deg, #4a3828 0%, #3a2818 100%);
+        }
+        #library .wall {
+            position: absolute; top: 0; width: 100%; height: 40%;
+            background:
+                repeating-linear-gradient(90deg, rgba(90, 60, 30, 0.4) 0px, rgba(90, 60, 30, 0.4) 2px, transparent 2px, transparent 60px),
+                repeating-linear-gradient(0deg, rgba(90, 60, 30, 0.3) 0px, rgba(90, 60, 30, 0.3) 2px, transparent 2px, transparent 30px),
+                linear-gradient(180deg, #2a1a0a 0%, #3d2815 100%);
+        }
+
+        /* Library windows — warm golden light */
+        .lib-window {
+            position: absolute; top: 5%;
+            width: 70px; height: 110px;
+            background: linear-gradient(180deg, rgba(255, 200, 100, 0.25) 0%, rgba(255, 170, 60, 0.1) 100%);
+            border: 3px solid #6a4830;
+            border-radius: 35px 35px 0 0;
+            box-shadow: 0 0 20px rgba(255, 180, 80, 0.15);
+        }
+        .lib-window::after {
+            content: ''; position: absolute;
+            top: 50%; left: 0; right: 0; height: 2px;
+            background: #6a4830;
+        }
+        .lib-window::before {
+            content: ''; position: absolute;
+            top: 0; bottom: 0; left: 50%; width: 2px;
+            background: #6a4830;
+        }
+
+        /* Tall library bookshelves */
+        .lib-shelf {
+            position: absolute; bottom: 40%;
+            width: 120px; height: 200px;
+            background: linear-gradient(180deg, #5a3d20 0%, #4a3018 50%, #3d2510 100%);
+            border: 2px solid #6a4828;
+            border-radius: 3px 3px 0 0;
+        }
+        .lib-shelf-row {
+            position: absolute; left: 5px; right: 5px;
+            height: 28px;
+            border-radius: 2px;
+        }
+        .lib-shelf-row:nth-child(1) { bottom: 6px; background: repeating-linear-gradient(90deg, #a04040, #a04040 9px, #4060a0 9px, #4060a0 17px, #408040 17px, #408040 25px, #a08040 25px, #a08040 33px, #8040a0 33px, #8040a0 41px, #a06040 41px, #a06040 49px); }
+        .lib-shelf-row:nth-child(2) { bottom: 40px; background: repeating-linear-gradient(90deg, #8040a0, #8040a0 11px, #a08040 11px, #a08040 20px, #408040 20px, #408040 28px, #4060a0 28px, #4060a0 38px, #a04040 38px, #a04040 46px); }
+        .lib-shelf-row:nth-child(3) { bottom: 74px; background: repeating-linear-gradient(90deg, #4060a0, #4060a0 8px, #a04040 8px, #a04040 18px, #a08040 18px, #a08040 26px, #408040 26px, #408040 36px, #8040a0 36px, #8040a0 44px, #a06040 44px, #a06040 52px); }
+        .lib-shelf-row:nth-child(4) { bottom: 108px; background: repeating-linear-gradient(90deg, #a06040, #a06040 10px, #408040 10px, #408040 19px, #a04040 19px, #a04040 28px, #4060a0 28px, #4060a0 36px, #8040a0 36px, #8040a0 46px); }
+        .lib-shelf-row:nth-child(5) { bottom: 142px; background: repeating-linear-gradient(90deg, #408040, #408040 12px, #a06040 12px, #a06040 22px, #8040a0 22px, #8040a0 30px, #a08040 30px, #a08040 40px, #4060a0 40px, #4060a0 48px); }
+        .lib-shelf-row:nth-child(6) { bottom: 170px; background: repeating-linear-gradient(90deg, #a08040, #a08040 9px, #4060a0 9px, #4060a0 20px, #a04040 20px, #a04040 28px, #408040 28px, #408040 38px, #a06040 38px, #a06040 46px); }
+
+        /* Reading desk */
+        .reading-desk {
+            position: absolute; bottom: 60%;
+            width: 80px; height: 35px;
+            background: linear-gradient(180deg, #6a4828 0%, #5a3818 100%);
+            border: 2px solid #7a5838;
+            border-radius: 3px;
+        }
+        .reading-desk::before {
+            content: ''; position: absolute;
+            top: 4px; left: 10px;
+            width: 25px; height: 18px;
+            background: #e8d8b0;
+            border: 1px solid #c8b890;
+            transform: rotate(-5deg);
+        }
+        .reading-desk::after {
+            content: ''; position: absolute;
+            top: 6px; right: 10px;
+            width: 20px; height: 14px;
+            background: #d0c0a0;
+            border: 1px solid #b8a880;
+            transform: rotate(3deg);
+        }
+
+        /* Candelabra */
+        .candelabra {
+            position: absolute; bottom: 62%;
+            width: 20px; height: 40px;
+        }
+        .candelabra::before {
+            content: ''; position: absolute;
+            bottom: 0; left: 6px;
+            width: 8px; height: 30px;
+            background: linear-gradient(180deg, #c8a860, #a08040);
+            border-radius: 2px;
+        }
+        .candelabra::after {
+            content: ''; position: absolute;
+            top: -8px; left: 3px;
+            width: 14px; height: 14px;
+            background: radial-gradient(ellipse, #ffcc44 0%, #ff9922 40%, transparent 70%);
+            border-radius: 50%;
+            animation: candle-flicker 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes candle-flicker {
+            0% { transform: scaleY(1) scaleX(0.9); opacity: 0.85; }
+            100% { transform: scaleY(1.1) scaleX(1); opacity: 1; }
+        }
+        /* Candelabra ambient glow */
+        .candelabra-glow {
+            position: absolute;
+            width: 80px; height: 80px;
+            background: radial-gradient(ellipse, rgba(255, 190, 80, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Shared window style */
+        .window {
+            position: absolute; top: 5%;
+            width: 60px; height: 100px;
+            background: linear-gradient(180deg, rgba(100, 160, 255, 0.3) 0%, rgba(60, 120, 200, 0.15) 100%);
+            border: 3px solid #4a4070;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 0 15px rgba(100, 160, 255, 0.2);
+        }
+        .window::after {
+            content: ''; position: absolute;
+            top: 50%; left: 0; right: 0; height: 2px;
+            background: #4a4070;
+        }
+
+        .bookshelf {
+            position: absolute; bottom: 62%;
+            width: 100px; height: 80px;
+            background: #3d2b1f; border: 2px solid #5a3d2b; border-radius: 3px;
+        }
+        .bookshelf::before {
+            content: ''; position: absolute;
+            bottom: 5px; left: 5px; right: 5px; height: 30px;
+            background: repeating-linear-gradient(90deg, #c44, #c44 8px, #48c 8px, #48c 16px, #4a4 16px, #4a4 24px, #c84 24px, #c84 32px, #84c 32px, #84c 40px);
+            border-radius: 2px;
+        }
+        .bookshelf::after {
+            content: ''; position: absolute;
+            bottom: 40px; left: 5px; right: 5px; height: 30px;
+            background: repeating-linear-gradient(90deg, #84c, #84c 10px, #c84 10px, #c84 18px, #4a4 18px, #4a4 26px, #48c 26px, #48c 34px, #c44 34px, #c44 42px);
+            border-radius: 2px;
+        }
+
+        .torch {
+            position: absolute; bottom: 62%;
+            width: 10px; height: 30px;
+            background: linear-gradient(180deg, #5a3d2b, #3d2b1f); border-radius: 2px;
+        }
+        .torch::before {
+            content: ''; position: absolute;
+            top: -12px; left: -4px; width: 18px; height: 16px;
+            background: radial-gradient(ellipse, #ff9944 0%, #ff6600 40%, transparent 70%);
+            border-radius: 50%;
+            animation: torch-flicker 0.5s ease-in-out infinite alternate;
+        }
+        .torch::after {
+            content: ''; position: absolute;
+            top: -40px; left: -20px; width: 50px; height: 50px;
+            background: radial-gradient(ellipse, rgba(255, 150, 50, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        @keyframes torch-flicker {
+            0% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+            100% { transform: scaleY(1.15) scaleX(0.9); opacity: 1; }
+        }
+
+        /* ===== CHARACTER BASE ===== */
+        .character {
+            position: absolute; width: 40px; height: 70px; z-index: 10;
+        }
+        .character .hair { position: absolute; top: 0; left: 2px; width: 36px; height: 24px; border-radius: 50% 50% 0 0; }
+        .character .hair-side-l { position: absolute; top: 14px; left: 0; width: 8px; height: 30px; border-radius: 0 0 4px 4px; }
+        .character .hair-side-r { position: absolute; top: 14px; right: 0; width: 8px; height: 30px; border-radius: 0 0 4px 4px; }
+        .character .face { position: absolute; top: 10px; left: 8px; width: 24px; height: 20px; background: #fce4c8; border-radius: 50%; }
+        .character .eye-l, .character .eye-r { position: absolute; top: 17px; width: 5px; height: 5px; border-radius: 50%; }
+        .character .eye-l { left: 12px; }
+        .character .eye-r { right: 12px; }
+        .character .robe { position: absolute; top: 28px; left: 5px; width: 30px; height: 32px; border-radius: 4px 4px 8px 8px; }
+        .character .robe-trim { position: absolute; top: 28px; left: 12px; width: 16px; height: 32px; background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent); border-radius: 2px; }
+        .character .cape { position: absolute; top: 28px; left: 2px; width: 36px; height: 28px; border-radius: 4px 4px 12px 12px; z-index: -1; transform-origin: top center; }
+        .character .arm-l { position: absolute; top: 30px; left: -2px; width: 7px; height: 22px; border-radius: 4px; transform-origin: top center; }
+        .character .arm-r { position: absolute; top: 30px; right: -2px; width: 7px; height: 22px; border-radius: 4px; transform-origin: top center; }
+        .character .arm-l::after, .character .arm-r::after { content: ''; position: absolute; bottom: 0; width: 7px; height: 6px; background: #fce4c8; border-radius: 50%; }
+        .character .foot-l, .character .foot-r { position: absolute; bottom: 0; width: 12px; height: 8px; background: #2a2a2a; border-radius: 4px; transform-origin: top center; }
+        .character .foot-l { left: 6px; }
+        .character .foot-r { right: 6px; }
+
+        /* Myne */
+        #myne .hair, #myne .hair-side-l, #myne .hair-side-r { background: #1a3a6e; }
+        #myne .eye-l, #myne .eye-r { background: #1a3a6e; }
+        #myne .hairpin { position: absolute; top: 8px; right: 6px; width: 8px; height: 8px; background: #ffd700; border-radius: 50%; box-shadow: 0 0 4px rgba(255, 215, 0, 0.6); animation: hairpin-glow 2s ease-in-out infinite; }
+        @keyframes hairpin-glow {
+            0%, 100% { box-shadow: 0 0 4px rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 10px rgba(255, 215, 0, 1), 0 0 20px rgba(255, 215, 0, 0.4); }
+        }
+        #myne .robe { background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%); }
+        #myne .arm-l, #myne .arm-r { background: #2a2a2a; }
+        #myne .cape { background: rgba(30, 30, 30, 0.6); }
+
+        /* Hannelore */
+        #hannelore .hair, #hannelore .hair-side-l, #hannelore .hair-side-r { background: #e88aab; }
+        #hannelore .eye-l, #hannelore .eye-r { background: #5588bb; }
+        #hannelore .robe { background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%); }
+        #hannelore .arm-l, #hannelore .arm-r { background: #2a2a2a; }
+        #hannelore .cape { background: rgba(30, 30, 30, 0.6); }
+        #hannelore .hair-ribbon { position: absolute; top: 6px; left: 4px; width: 32px; height: 6px; background: #cc6688; border-radius: 3px; }
+        #hannelore .hair-ribbon::before, #hannelore .hair-ribbon::after { content: ''; position: absolute; top: -2px; width: 10px; height: 10px; background: #cc6688; border-radius: 50% 50% 50% 0; }
+        #hannelore .hair-ribbon::before { left: -4px; transform: rotate(-45deg); }
+        #hannelore .hair-ribbon::after { right: -4px; transform: rotate(45deg); }
+        #hannelore:not(.walking) .robe { animation: breathe 2.5s ease-in-out infinite; }
+        #hannelore:not(.walking) .hair-side-l { animation: hair-bounce 3s ease-in-out infinite; }
+        #hannelore:not(.walking) .hair-side-r { animation: hair-bounce 3s ease-in-out infinite 0.3s; }
+
+        /* Sylvester */
+        #sylvester .hair, #sylvester .hair-side-l, #sylvester .hair-side-r { background: #4a7a30; }
+        #sylvester .eye-l, #sylvester .eye-r { background: #4a7a30; }
+        #sylvester .robe { background: linear-gradient(180deg, #f0e8d0 0%, #d8d0b8 100%); }
+        #sylvester .arm-l, #sylvester .arm-r { background: #f0e8d0; }
+        #sylvester .cape { background: rgba(80, 140, 60, 0.5); }
+        #sylvester .syl-mantle { position: absolute; top: 26px; left: -4px; width: 48px; height: 16px; background: linear-gradient(180deg, #d4a040, #b88830); border-radius: 6px 6px 0 0; z-index: -1; }
+        #sylvester:not(.walking) .robe { animation: breathe 2.8s ease-in-out infinite; }
+        #sylvester:not(.walking) .hair-side-l { animation: hair-bounce 3.2s ease-in-out infinite; }
+        #sylvester:not(.walking) .hair-side-r { animation: hair-bounce 3.2s ease-in-out infinite 0.4s; }
+
+        .char-shadow { position: absolute; width: 34px; height: 8px; background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%); z-index: 9; pointer-events: none; }
+
+        /* Walking */
+        .character.walking { animation: body-bob 0.35s ease-in-out infinite; }
+        .character.walking .foot-l { animation: limb-swing 0.35s ease-in-out infinite; }
+        .character.walking .foot-r { animation: limb-swing 0.35s ease-in-out infinite reverse; }
+        .character.walking .arm-l { animation: arm-swing 0.35s ease-in-out infinite; }
+        .character.walking .arm-r { animation: arm-swing 0.35s ease-in-out infinite reverse; }
+        .character.walking .cape { animation: cape-flow 0.35s ease-in-out infinite alternate; }
+        .character.walking .hair-side-l { animation: hair-bounce 0.35s ease-in-out infinite; }
+        .character.walking .hair-side-r { animation: hair-bounce 0.35s ease-in-out infinite 0.1s; }
+        @keyframes body-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+        .character.walking.face-left { animation: body-bob-flip 0.35s ease-in-out infinite; }
+        @keyframes body-bob-flip { 0%, 100% { transform: scaleX(-1) translateY(0); } 50% { transform: scaleX(-1) translateY(-2px); } }
+        @keyframes limb-swing { 0%, 100% { transform: translateY(0) translateX(-2px); } 50% { transform: translateY(-5px) translateX(2px); } }
+        @keyframes arm-swing { 0%, 100% { transform: rotate(15deg); } 50% { transform: rotate(-15deg); } }
+        @keyframes cape-flow { 0% { transform: skewX(-3deg); } 100% { transform: skewX(3deg); } }
+        @keyframes hair-bounce { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(1px) rotate(2deg); } }
+        #myne:not(.walking) .robe { animation: breathe 2.5s ease-in-out infinite; }
+        @keyframes breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.02); } }
+        .character.face-left { transform: scaleX(-1); }
+
+        /* ===== SCENE TRANSITION ===== */
+        #transition-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+        #transition-overlay.active { opacity: 1; pointer-events: all; }
+        #transition-text {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #e8d0a0;
+            font-size: 1.6rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.4s;
+            text-shadow: 0 0 15px rgba(255, 200, 100, 0.5);
+        }
+        #transition-overlay.active #transition-text { opacity: 1; }
+
+        /* ===== DIALOGUE BOX ===== */
+        #dialogue-box {
+            display: none; position: fixed;
+            bottom: 40px; left: 50%; transform: translateX(-50%);
+            width: min(90%, 500px);
+            background: rgba(15, 12, 40, 0.92);
+            border: 2px solid rgba(150, 180, 255, 0.4);
+            border-radius: 14px; padding: 18px 22px;
+            z-index: 30;
+            box-shadow: 0 0 30px rgba(60, 100, 200, 0.3);
+        }
+        /* Library-themed dialogue */
+        #dialogue-box.library-theme {
+            background: rgba(40, 25, 10, 0.94);
+            border-color: rgba(200, 170, 100, 0.4);
+            box-shadow: 0 0 30px rgba(200, 150, 50, 0.2);
+        }
+        #dialogue-name { color: #c0c8e0; font-size: 1rem; margin-bottom: 6px; text-shadow: 0 0 6px rgba(150, 180, 255, 0.5); }
+        .library-theme #dialogue-name { color: #e8d0a0; text-shadow: 0 0 6px rgba(200, 170, 100, 0.5); }
+        #dialogue-text { color: #e0e8ff; font-size: 1.1rem; line-height: 1.5; min-height: 3em; }
+        .library-theme #dialogue-text { color: #f0e8d8; }
+        #dialogue-next { color: rgba(180, 200, 255, 0.6); font-size: 0.85rem; text-align: right; margin-top: 8px; animation: blink-prompt 1.2s ease-in-out infinite; }
+        .library-theme #dialogue-next { color: rgba(220, 190, 120, 0.6); }
+        @keyframes blink-prompt { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+        /* HUD */
+        #hud { position: fixed; top: 10px; left: 10px; color: #b0d4ff; font-size: 1.1rem; z-index: 20; text-shadow: 0 0 8px rgba(60, 140, 255, 0.5); }
+        #hud.library-hud { color: #e8d0a0; text-shadow: 0 0 8px rgba(200, 160, 80, 0.5); }
+
+        /* Mobile */
+        #mobile-controls { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 20; flex-direction: column; align-items: center; gap: 6px; }
+        .mobile-row { display: flex; gap: 6px; }
+        #mobile-controls button { font-size: 1.8rem; width: 56px; height: 56px; border: 2px solid rgba(150, 200, 255, 0.4); background: rgba(30, 60, 120, 0.6); color: #fff; border-radius: 12px; cursor: pointer; user-select: none; -webkit-user-select: none; transition: background 0.1s; }
+        #mobile-controls button:active { background: rgba(60, 120, 220, 0.8); }
+        #mobile-controls.dialogue-active { bottom: 160px; }
+        @media (pointer: coarse) { #mobile-controls { display: flex; } }
+
+        .hidden { display: none !important; }
+
+        /* ===== GRUTRISSHEIT (looks like a normal book on the floor) ===== */
+        .grutrissheit-book {
+            position: absolute; bottom: 22%;
+            width: 36px; height: 26px;
+            background: linear-gradient(135deg, #d8c8a0 0%, #c8b888 40%, #b8a878 100%);
+            border: 1px solid #a89868;
+            border-radius: 2px 4px 4px 2px;
+            z-index: 6;
+            transform: rotate(-8deg);
+        }
+        .grutrissheit-book::before {
+            content: ''; position: absolute;
+            left: 0; top: 2px; bottom: 2px; width: 4px;
+            background: linear-gradient(90deg, #a89060, #c8b888);
+            border-radius: 2px 0 0 2px;
+        }
+
+        /* Myne holding book */
+        .grutrissheit-held {
+            position: absolute;
+            top: 22px; right: -16px;
+            width: 20px; height: 16px;
+            background: linear-gradient(135deg, #f0e8c0, #d8c888);
+            border: 1px solid #c8a860;
+            border-radius: 1px 3px 3px 1px;
+            box-shadow: 0 0 10px rgba(255, 215, 100, 0.6);
+            z-index: 11;
+            animation: held-glow 2s ease-in-out infinite;
+        }
+        @keyframes held-glow {
+            0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 100, 0.4); }
+            50% { box-shadow: 0 0 16px rgba(255, 215, 100, 0.9), 0 0 30px rgba(255, 200, 60, 0.4); }
+        }
+
+        /* ===== CHOICE BUTTONS ===== */
+        #choice-box {
+            display: none; position: fixed;
+            bottom: 40px; left: 50%; transform: translateX(-50%);
+            width: min(90%, 500px);
+            background: rgba(40, 25, 10, 0.94);
+            border: 2px solid rgba(200, 170, 100, 0.4);
+            border-radius: 14px; padding: 18px 22px;
+            z-index: 31;
+            box-shadow: 0 0 30px rgba(200, 150, 50, 0.2);
+        }
+        #choice-prompt {
+            color: #e8d0a0; font-size: 1.1rem; line-height: 1.5;
+            margin-bottom: 14px;
+            text-shadow: 0 0 6px rgba(200, 170, 100, 0.3);
+        }
+        .choice-buttons {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .choice-btn {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.05rem;
+            color: #f0e8d8;
+            background: linear-gradient(135deg, rgba(120, 90, 40, 0.5), rgba(80, 60, 30, 0.4));
+            border: 2px solid rgba(200, 170, 100, 0.35);
+            border-radius: 10px;
+            padding: 12px 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .choice-btn:hover {
+            background: linear-gradient(135deg, rgba(160, 120, 50, 0.6), rgba(120, 90, 40, 0.5));
+            border-color: rgba(220, 190, 120, 0.6);
+            box-shadow: 0 0 15px rgba(200, 160, 60, 0.3);
+            transform: translateX(4px);
+        }
+        .choice-btn:active {
+            transform: translateX(2px) scale(0.98);
         }
     </style>
 </head>
 <body>
-    <h1>Elise's Game</h1>
+    <!-- Gem background -->
+    <div class="gem-bg" id="gem-bg">
+        <div class="gem">
+            <div class="gem-glow"></div>
+            <div class="gem-top"></div>
+            <div class="gem-crown-left"></div>
+            <div class="gem-crown-right"></div>
+            <div class="gem-body"></div>
+            <div class="gem-facet-left"></div>
+            <div class="gem-facet-right"></div>
+        </div>
+        <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+        <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+    </div>
+
+    <!-- Title -->
+    <div id="title-screen">
+        <h1>An Ascendance Of A Bookworm Adventure</h1>
+        <button id="play-btn">Play</button>
+    </div>
+
+    <!-- Scene transition -->
+    <div id="transition-overlay">
+        <div id="transition-text"></div>
+    </div>
+
+    <!-- Game -->
+    <div id="game-screen">
+        <div id="camera">
+            <!-- Academy Hallway -->
+            <div class="room" id="academy">
+                <div class="wall">
+                    <div class="window" style="left:120px;"></div>
+                    <div class="window" style="left:400px;"></div>
+                    <div class="window" style="left:680px;"></div>
+                    <div class="window" style="left:960px;"></div>
+                    <div class="window" style="left:1240px;"></div>
+                    <div class="window" style="left:1520px;"></div>
+                    <div class="window" style="left:1800px;"></div>
+                    <div class="window" style="left:2100px;"></div>
+                </div>
+                <div class="bookshelf" style="left:80px;"></div>
+                <div class="bookshelf" style="left:500px;"></div>
+                <div class="bookshelf" style="left:900px;"></div>
+                <div class="bookshelf" style="left:1350px;"></div>
+                <div class="bookshelf" style="left:1750px;"></div>
+                <div class="bookshelf" style="left:2150px;"></div>
+                <div class="torch" style="left:250px;"></div>
+                <div class="torch" style="left:700px;"></div>
+                <div class="torch" style="left:1150px;"></div>
+                <div class="torch" style="left:1600px;"></div>
+                <div class="torch" style="left:2000px;"></div>
+                <div class="floor"></div>
+            </div>
+
+            <!-- Library -->
+            <div class="room" id="library">
+                <div class="wall">
+                    <div class="lib-window" style="left:200px;"></div>
+                    <div class="lib-window" style="left:700px;"></div>
+                    <div class="lib-window" style="left:1200px;"></div>
+                    <div class="lib-window" style="left:1700px;"></div>
+                    <div class="lib-window" style="left:2200px;"></div>
+                </div>
+                <div class="lib-shelf" style="left:60px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:350px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:640px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:1000px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:1350px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:1650px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:2000px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="lib-shelf" style="left:2350px;"><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div><div class="lib-shelf-row"></div></div>
+                <div class="reading-desk" style="left:480px;"></div>
+                <div class="reading-desk" style="left:900px;"></div>
+                <div class="reading-desk" style="left:1500px;"></div>
+                <div class="reading-desk" style="left:2100px;"></div>
+                <div class="candelabra" style="left:300px;"></div>
+                <div class="candelabra-glow" style="left:270px; bottom:62%;"></div>
+                <div class="candelabra" style="left:800px;"></div>
+                <div class="candelabra-glow" style="left:770px; bottom:62%;"></div>
+                <div class="candelabra" style="left:1250px;"></div>
+                <div class="candelabra-glow" style="left:1220px; bottom:62%;"></div>
+                <div class="candelabra" style="left:1800px;"></div>
+                <div class="candelabra-glow" style="left:1770px; bottom:62%;"></div>
+                <div class="candelabra" style="left:2500px;"></div>
+                <div class="candelabra-glow" style="left:2470px; bottom:62%;"></div>
+                <!-- Grutrissheit (looks like a normal book on the floor) -->
+                <div class="grutrissheit-book" id="grutrissheit-book" style="left:1800px;"></div>
+
+                <div class="floor"></div>
+            </div>
+
+            <!-- Characters -->
+            <div class="char-shadow" id="myne-shadow"></div>
+            <div class="character" id="myne">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="hairpin"></div><div class="face"></div>
+                <div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="hannelore-shadow"></div>
+            <div class="character" id="hannelore" style="transform: scaleX(-1);">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="hair-ribbon"></div><div class="face"></div>
+                <div class="eye-l"></div><div class="eye-r"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+            <div class="char-shadow" id="sylvester-shadow"></div>
+            <div class="character" id="sylvester" style="display:none;">
+                <div class="hair"></div><div class="hair-side-l"></div><div class="hair-side-r"></div>
+                <div class="face"></div>
+                <div class="eye-l"></div><div class="eye-r"></div>
+                <div class="syl-mantle"></div>
+                <div class="arm-l"></div><div class="arm-r"></div>
+                <div class="cape"></div><div class="robe"></div><div class="robe-trim"></div>
+                <div class="foot-l"></div><div class="foot-r"></div>
+            </div>
+        </div>
+
+        <div id="dialogue-box">
+            <div id="dialogue-name"></div>
+            <div id="dialogue-text"></div>
+            <div id="dialogue-next">Click or press Space to continue...</div>
+        </div>
+        <div id="choice-box">
+            <div id="choice-prompt"></div>
+            <div class="choice-buttons" id="choice-buttons"></div>
+        </div>
+        <div id="hud">Royal Academy — Arrow keys / WASD to move</div>
+        <div id="mobile-controls">
+            <div class="mobile-row"><button id="btn-up">&#8593;</button></div>
+            <div class="mobile-row">
+                <button id="btn-left">&#8592;</button>
+                <button id="btn-down">&#8595;</button>
+                <button id="btn-right">&#8594;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== ELEMENTS =====
+        const titleScreen = document.getElementById('title-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const gemBg = document.getElementById('gem-bg');
+        const playBtn = document.getElementById('play-btn');
+        const camera = document.getElementById('camera');
+        const myne = document.getElementById('myne');
+        const myneShadow = document.getElementById('myne-shadow');
+        const hannelore = document.getElementById('hannelore');
+        const hanneloreShadow = document.getElementById('hannelore-shadow');
+        const dialogueBox = document.getElementById('dialogue-box');
+        const dialogueName = document.getElementById('dialogue-name');
+        const dialogueText = document.getElementById('dialogue-text');
+        const dialogueNext = document.getElementById('dialogue-next');
+        const mobileControls = document.getElementById('mobile-controls');
+        const transitionOverlay = document.getElementById('transition-overlay');
+        const transitionText = document.getElementById('transition-text');
+        const hud = document.getElementById('hud');
+        const academyRoom = document.getElementById('academy');
+        const libraryRoom = document.getElementById('library');
+        const grutrissheitBook = document.getElementById('grutrissheit-book');
+        const sylvester = document.getElementById('sylvester');
+        const sylvesterShadow = document.getElementById('sylvester-shadow');
+        const choiceBox = document.getElementById('choice-box');
+        const choicePrompt = document.getElementById('choice-prompt');
+        const choiceButtons = document.getElementById('choice-buttons');
+
+        // ===== WORLD =====
+        let currentRoom = 'academy';
+        let worldWidth = 2400;
+        const CHAR_W = 40, CHAR_H = 70, MIN_BOTTOM = 20;
+        function getMaxBottom() { return window.innerHeight * 0.55 - CHAR_H; }
+
+        // ===== MYNE =====
+        let myneX = 600, myneY = 60;
+        let velX = 0, velY = 0;
+        const accel = 0.8, friction = 0.78, maxSpeed = 5;
+        let lastFacing = 'right';
+        let playerCanMove = false;
+
+        // ===== GRUTRISSHEIT =====
+        let grutrissheitGrabbed = false;
+        let sylvesterEncounterDone = false;
+        const GRUT_X = 1788; // x position of the book
+
+        // ===== SYLVESTER =====
+        let sylvesterX = 0, sylvesterY = 60;
+        let sylvesterWalking = false, sylvesterTargetX = null;
+        let sylvesterVisible = false;
+
+        // ===== HANNELORE =====
+        let hanneloreX = 800, hanneloreY = 60;
+        let hanneloreWalking = false, hanneloreTargetX = null;
+        let hanneloreVisible = true;
+
+        // ===== CAMERA =====
+        let camX = 0;
+        function updateCamera() {
+            const screenW = window.innerWidth;
+            let targetCamX = myneX - screenW / 2 + CHAR_W / 2;
+            targetCamX = Math.max(0, Math.min(worldWidth - screenW, targetCamX));
+            camX += (targetCamX - camX) * 0.1;
+            camera.style.transform = 'translateX(' + (-camX) + 'px)';
+        }
+
+        function positionCharacter(el, shadowEl, x, y) {
+            el.style.left = x + 'px';
+            el.style.bottom = y + 'px';
+            if (shadowEl) {
+                shadowEl.style.left = (x + 3) + 'px';
+                shadowEl.style.bottom = (y - 6) + 'px';
+                const s = 1 + (y - MIN_BOTTOM) * 0.002;
+                shadowEl.style.transform = 'scaleX(' + s + ')';
+                shadowEl.style.opacity = Math.max(0.2, 1 - (y - MIN_BOTTOM) * 0.003);
+            }
+        }
+
+        // ===== INPUT =====
+        const keys = {};
+        document.addEventListener('keydown', (e) => { keys[e.key] = true; });
+        document.addEventListener('keyup', (e) => { keys[e.key] = false; });
+        let mobileUp = false, mobileDown = false, mobileLeft = false, mobileRight = false;
+        function bindMobile(id, setFn) {
+            const btn = document.getElementById(id);
+            btn.addEventListener('touchstart', (e) => { e.preventDefault(); setFn(true); });
+            btn.addEventListener('touchend', () => setFn(false));
+            btn.addEventListener('touchcancel', () => setFn(false));
+        }
+        bindMobile('btn-up', v => mobileUp = v);
+        bindMobile('btn-down', v => mobileDown = v);
+        bindMobile('btn-left', v => mobileLeft = v);
+        bindMobile('btn-right', v => mobileRight = v);
+
+        // ===== DIALOGUE =====
+        let dialogueQueue = [];
+        let dialogueActive = false;
+        let typewriterTimer = null;
+        let currentFullText = '';
+        let currentCharIndex = 0;
+        let typewriterDone = false;
+        let onDialogueEnd = null;
+
+        function showDialogue(lines, onEnd) {
+            dialogueQueue = lines.slice();
+            dialogueActive = true;
+            playerCanMove = false;
+            dialogueBox.style.display = 'block';
+            dialogueNext.style.display = 'none';
+            mobileControls.classList.add('dialogue-active');
+            onDialogueEnd = onEnd || null;
+            advanceDialogue();
+        }
+
+        function advanceDialogue() {
+            if (!typewriterDone) {
+                clearInterval(typewriterTimer);
+                dialogueText.textContent = currentFullText;
+                typewriterDone = true;
+                dialogueNext.style.display = 'block';
+                return;
+            }
+            if (dialogueQueue.length === 0) {
+                closeDialogue();
+                return;
+            }
+            const line = dialogueQueue.shift();
+            dialogueName.textContent = line.name;
+            currentFullText = line.text;
+            currentCharIndex = 0;
+            typewriterDone = false;
+            dialogueText.textContent = '';
+            dialogueNext.style.display = 'none';
+            typewriterTimer = setInterval(() => {
+                if (currentCharIndex < currentFullText.length) {
+                    dialogueText.textContent = currentFullText.slice(0, currentCharIndex + 1);
+                    currentCharIndex++;
+                } else {
+                    clearInterval(typewriterTimer);
+                    typewriterDone = true;
+                    dialogueNext.style.display = 'block';
+                }
+            }, 35);
+        }
+
+        function closeDialogue() {
+            dialogueActive = false;
+            dialogueBox.style.display = 'none';
+            mobileControls.classList.remove('dialogue-active');
+            if (onDialogueEnd) {
+                const cb = onDialogueEnd;
+                onDialogueEnd = null;
+                cb();
+            } else {
+                playerCanMove = true;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (dialogueActive && (e.key === ' ' || e.key === 'Enter')) {
+                e.preventDefault();
+                advanceDialogue();
+            }
+        });
+        dialogueBox.addEventListener('click', () => { if (dialogueActive) advanceDialogue(); });
+
+        // ===== SCENE TRANSITION =====
+        function transitionToLibrary() {
+            transitionText.textContent = 'Heading to the Library...';
+            transitionOverlay.classList.add('active');
+
+            setTimeout(() => {
+                // Switch rooms
+                academyRoom.style.display = 'none';
+                libraryRoom.style.display = 'block';
+                currentRoom = 'library';
+                worldWidth = 2800;
+
+                // Hide Hannelore for now (she can appear in library later)
+                hannelore.style.display = 'none';
+                hanneloreShadow.style.display = 'none';
+                hanneloreVisible = false;
+
+                // Place Myne in library
+                myneX = 200;
+                myneY = 60;
+                lastFacing = 'right';
+                camX = 0;
+                positionCharacter(myne, myneShadow, myneX, myneY);
+                updateCamera();
+
+                // Update HUD style
+                hud.textContent = 'Royal Academy Library';
+                hud.classList.add('library-hud');
+                dialogueBox.classList.add('library-theme');
+
+                // Fade out transition
+                setTimeout(() => {
+                    transitionOverlay.classList.remove('active');
+
+                    // Library arrival dialogue
+                    setTimeout(() => {
+                        showDialogue([
+                            { name: 'Myne', text: 'Look at all these books! The shelves go all the way to the ceiling!' },
+                            { name: 'Myne', text: 'I could spend the rest of my life in here and never read them all...' },
+                            { name: 'Myne', text: 'I wonder which section has the rare volumes from Dunkelfelger?' },
+                        ]);
+                    }, 500);
+                }, 800);
+            }, 1200);
+        }
+
+        // ===== INTRO =====
+        function runIntro() {
+            hanneloreX = myneX + 400;
+            hanneloreY = myneY;
+            hanneloreTargetX = myneX + 70;
+            hannelore.style.transform = 'scaleX(1)';
+            hanneloreWalking = true;
+            positionCharacter(hannelore, hanneloreShadow, hanneloreX, hanneloreY);
+        }
+
+        function onHanneloreArrived() {
+            hanneloreWalking = false;
+            hannelore.classList.remove('walking');
+            hannelore.style.transform = 'scaleX(1)';
+
+            showDialogue([
+                { name: 'Hannelore', text: 'Rozemyne! There you are. I have been looking everywhere for you.' },
+                { name: 'Hannelore', text: 'I have important news. The library committee is meeting today!' },
+                { name: 'Hannelore', text: 'They are discussing which new books to add to the Royal Academy library this year.' },
+                { name: 'Hannelore', text: 'I know how much you love books, so I thought you would want to attend.' },
+                { name: 'Myne', text: 'The library committee?! Of course I want to go! Are there really new books?!' },
+                { name: 'Hannelore', text: 'Yes! I heard there might be rare volumes from Dunkelfelger and Klassenberg.' },
+                { name: 'Hannelore', text: 'The meeting room is further down the hall. We should hurry before it starts!' },
+                { name: 'Myne', text: 'Books from other duchies... this is the best day ever! Let us go, Hannelore!' },
+            ], transitionToLibrary);
+        }
+
+        // ===== GRUTRISSHEIT GRAB =====
+        function triggerGrutrissheitGrab() {
+            grutrissheitGrabbed = true;
+            playerCanMove = false;
+            velX = 0; velY = 0;
+
+            // Remove book from floor
+            grutrissheitBook.style.display = 'none';
+
+            // Add book to Myne's hand
+            const heldBook = document.createElement('div');
+            heldBook.className = 'grutrissheit-held';
+            myne.appendChild(heldBook);
+
+            // Casual dialogue — she thinks it's just a book on the floor
+            setTimeout(() => {
+                showDialogue([
+                    { name: 'Myne', text: 'Oh, someone left a book out. I should pick it up before it gets damaged.' },
+                    { name: 'Myne', text: 'The cover is pretty. Must be one of the older volumes.' },
+                    { name: 'Myne', text: 'I will just carry it with me and put it back on the right shelf later.' },
+                ], () => {
+                    // After picking up the book, let player walk a bit, then Sylvester appears
+                    playerCanMove = true;
+                    setTimeout(triggerSylvesterEncounter, 3000);
+                });
+            }, 300);
+        }
+
+        // ===== CHOICE SYSTEM =====
+        function showChoice(prompt, choices) {
+            playerCanMove = false;
+            choicePrompt.textContent = prompt;
+            while (choiceButtons.firstChild) choiceButtons.removeChild(choiceButtons.firstChild);
+            choices.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = c.text;
+                btn.addEventListener('click', () => {
+                    choiceBox.style.display = 'none';
+                    mobileControls.classList.remove('dialogue-active');
+                    c.action();
+                });
+                choiceButtons.appendChild(btn);
+            });
+            choiceBox.style.display = 'block';
+            mobileControls.classList.add('dialogue-active');
+        }
+
+        // ===== SYLVESTER ENCOUNTER =====
+        function triggerSylvesterEncounter() {
+            if (sylvesterEncounterDone) return;
+            sylvesterEncounterDone = true;
+            playerCanMove = false;
+            velX = 0; velY = 0;
+
+            // Sylvester appears from the right, walking toward Myne
+            sylvester.style.display = 'block';
+            sylvesterShadow.style.display = 'block';
+            sylvesterVisible = true;
+            sylvesterX = myneX + 500;
+            sylvesterY = myneY;
+            sylvesterTargetX = myneX + 70;
+            sylvester.style.transform = 'scaleX(1)';
+            sylvesterWalking = true;
+            positionCharacter(sylvester, sylvesterShadow, sylvesterX, sylvesterY);
+        }
+
+        function onSylvesterArrived() {
+            sylvesterWalking = false;
+            sylvester.classList.remove('walking');
+            sylvester.style.transform = 'scaleX(1)';
+
+            showDialogue([
+                { name: 'Sylvester', text: 'Rozemyne! There you are. I heard you ran off to the library again.' },
+                { name: 'Sylvester', text: 'Honestly, can you not stay out of trouble for one single—' },
+                { name: 'Sylvester', text: '...' },
+                { name: 'Sylvester', text: 'Rozemyne. What is that book you are holding.' },
+                { name: 'Myne', text: 'Hm? Oh, this? I just found it on the floor. Someone must have dropped it.' },
+                { name: 'Sylvester', text: 'That... that golden binding... those divine symbols on the cover...' },
+                { name: 'Sylvester', text: 'Rozemyne. That is the Grutrissheit.' },
+                { name: 'Myne', text: 'The what now?' },
+                { name: 'Sylvester', text: 'THE GRUTRISSHEIT! The holy book that contains the secrets of the gods!' },
+                { name: 'Sylvester', text: 'The book that only the Zent — the ruler of all Yurgenschmidt — is meant to possess!' },
+                { name: 'Myne', text: '...Oh.' },
+                { name: 'Myne', text: 'OH.' },
+                { name: 'Myne', text: 'I thought it was just a pretty book someone left out!!' },
+                { name: 'Sylvester', text: 'How did you even — never mind. This is a disaster. If anyone finds out you have this...' },
+                { name: 'Sylvester', text: 'Every archducal family in the country will want to use you. Or eliminate you.' },
+            ], () => {
+                // Present the choice
+                showChoice('What should Myne do?', [
+                    {
+                        text: 'Report it — Tell Sylvester to bring it to the Sovereignty',
+                        action: choiceReport,
+                    },
+                    {
+                        text: 'Keep it secret — Hide the Grutrissheit and say nothing',
+                        action: choiceKeepSecret,
+                    },
+                ]);
+            });
+        }
+
+        function choiceReport() {
+            showDialogue([
+                { name: 'Myne', text: 'You are right. This is too dangerous to keep hidden.' },
+                { name: 'Myne', text: 'We should report this to the Sovereignty. If the Zent lost it, they need to know.' },
+                { name: 'Sylvester', text: '...I am impressed, Rozemyne. That is the responsible choice.' },
+                { name: 'Sylvester', text: 'I half expected you to say you wanted to read it first.' },
+                { name: 'Myne', text: 'I mean... I DO want to read it. More than anything in the world.' },
+                { name: 'Myne', text: 'But having every duchy in Yurgenschmidt trying to kidnap me sounds... bad.' },
+                { name: 'Sylvester', text: 'Ha! At least you have some sense. Come, we will go together.' },
+                { name: 'Sylvester', text: 'I will send a message to the Sovereignty immediately. Stay close to me.' },
+                { name: 'Myne', text: '(I wonder if they would let me read just one page before handing it over...)' },
+            ]);
+        }
+
+        function choiceKeepSecret() {
+            showDialogue([
+                { name: 'Myne', text: '...What if we just... did not tell anyone?' },
+                { name: 'Sylvester', text: 'WHAT?!' },
+                { name: 'Myne', text: 'Think about it! If we report it, the Sovereignty will take it away immediately.' },
+                { name: 'Myne', text: 'But if we keep it secret, I could study it. Learn the secrets of the gods!' },
+                { name: 'Myne', text: 'There must be knowledge in here that has been lost for generations!' },
+                { name: 'Sylvester', text: 'Rozemyne, this is insane. If anyone discovers we hid this—' },
+                { name: 'Myne', text: 'Then we just have to make sure nobody discovers it!' },
+                { name: 'Sylvester', text: '...' },
+                { name: 'Sylvester', text: 'I cannot believe I am even considering this.' },
+                { name: 'Sylvester', text: 'Fine. But if this goes wrong, I am blaming you entirely.' },
+                { name: 'Myne', text: 'Deal! Now, let me see... the first page says...' },
+                { name: 'Myne', text: '...I cannot read any of it. It is all in divine script.' },
+                { name: 'Sylvester', text: 'Of course it is. You just committed treason for a book you cannot read.' },
+                { name: 'Myne', text: 'I will LEARN to read it! Just give me time!' },
+            ]);
+        }
+
+        // ===== GAME LOOP =====
+        function gameLoop() {
+            if (hanneloreWalking && hanneloreTargetX !== null) {
+                const dx = hanneloreTargetX - hanneloreX;
+                if (Math.abs(dx) > 3) {
+                    hanneloreX += Math.sign(dx) * 2.5;
+                    hannelore.classList.add('walking');
+                } else {
+                    hanneloreX = hanneloreTargetX;
+                    hanneloreTargetX = null;
+                    onHanneloreArrived();
+                }
+                positionCharacter(hannelore, hanneloreShadow, hanneloreX, hanneloreY);
+            }
+
+            if (sylvesterWalking && sylvesterTargetX !== null) {
+                const dx = sylvesterTargetX - sylvesterX;
+                if (Math.abs(dx) > 3) {
+                    sylvesterX += Math.sign(dx) * 2.5;
+                    sylvester.classList.add('walking');
+                } else {
+                    sylvesterX = sylvesterTargetX;
+                    sylvesterTargetX = null;
+                    onSylvesterArrived();
+                }
+                positionCharacter(sylvester, sylvesterShadow, sylvesterX, sylvesterY);
+            }
+
+            if (playerCanMove) {
+                let inputX = 0, inputY = 0;
+                if (keys['ArrowLeft'] || keys['a'] || mobileLeft) inputX -= 1;
+                if (keys['ArrowRight'] || keys['d'] || mobileRight) inputX += 1;
+                if (keys['ArrowUp'] || keys['w'] || mobileUp) inputY += 1;
+                if (keys['ArrowDown'] || keys['s'] || mobileDown) inputY -= 1;
+                if (inputX !== 0 && inputY !== 0) { inputX *= 0.707; inputY *= 0.707; }
+
+                velX += inputX * accel;
+                velY += inputY * accel;
+                const spd = Math.sqrt(velX * velX + velY * velY);
+                if (spd > maxSpeed) { velX = (velX / spd) * maxSpeed; velY = (velY / spd) * maxSpeed; }
+                velX *= friction; velY *= friction;
+                if (Math.abs(velX) < 0.1) velX = 0;
+                if (Math.abs(velY) < 0.1) velY = 0;
+
+                myneX += velX; myneY += velY;
+                myneX = Math.max(0, Math.min(worldWidth - CHAR_W, myneX));
+                myneY = Math.max(MIN_BOTTOM, Math.min(getMaxBottom(), myneY));
+
+                if (inputX < 0) lastFacing = 'left';
+                else if (inputX > 0) lastFacing = 'right';
+
+                const moving = Math.abs(velX) > 0.3 || Math.abs(velY) > 0.3;
+                myne.className = 'character' + (moving ? ' walking' : '') + (lastFacing === 'left' ? ' face-left' : '');
+            } else {
+                velX = 0; velY = 0;
+                myne.className = 'character' + (lastFacing === 'left' ? ' face-left' : '');
+            }
+
+            // Check if Myne is near the Grutrissheit
+            if (currentRoom === 'library' && !grutrissheitGrabbed && Math.abs(myneX - GRUT_X) < 50) {
+                triggerGrutrissheitGrab();
+            }
+
+            positionCharacter(myne, myneShadow, myneX, myneY);
+            updateCamera();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // ===== START =====
+        playBtn.addEventListener('click', () => {
+            titleScreen.classList.add('hidden');
+            gemBg.classList.add('hidden');
+            gameScreen.style.display = 'block';
+            myneX = 600; myneY = 60;
+            camX = myneX - window.innerWidth / 2;
+            positionCharacter(myne, myneShadow, myneX, myneY);
+            updateCamera();
+            requestAnimationFrame(gameLoop);
+            setTimeout(runIntro, 800);
+        });
+    </script>
 </body>
 </html>
